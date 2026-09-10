@@ -26,20 +26,12 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release --no-tree-shake-icons
-        continue-on-error: true
-
-      - name: Find APK
-        run: find . -name "*.apk" -type f
+      - name: Build Debug APK
+        run: flutter build apk --debug --no-tree-shake-icons
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
-          path: |
-            **/build/app/outputs/flutter-apk/*.apk
-            **/build/outputs/**/*.apk
-            android/**/build/outputs/**/*.apk
-          if-no-files-found: warn
+          name: debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
           retention-days: 30
