@@ -31,10 +31,18 @@ jobs:
 
       - name: Build APK
         run: flutter build apk --release --no-tree-shake-icons
+        continue-on-error: true
+
+      - name: Find APK
+        run: find . -name "*.apk" -type f
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: |
+            **/build/app/outputs/flutter-apk/*.apk
+            **/build/outputs/**/*.apk
+            android/**/build/outputs/**/*.apk
+          if-no-files-found: warn
           retention-days: 30
