@@ -6,8 +6,7 @@ plugins {
 
 android {
     namespace = "com.gbhss.sita"
-    compileSdk = 36
-    ndkVersion = "29.0.14206865"
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -16,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId = "com.gbhss.sita"
-        minSdk = flutter.minSdkVersion
-        targetSdk = 36
+        minSdk = 21
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
     }
@@ -33,13 +32,4 @@ android {
 
 flutter {
     source = "../.."
-}
-
-// Ensure both 64-bit and 32-bit libraries are included for maximum compatibility
-android {
-    defaultConfig {
-        ndk {
-            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
-        }
-    }
 }
