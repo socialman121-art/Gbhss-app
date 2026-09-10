@@ -7,9 +7,13 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         
+        <!-- Force Flutter to use the OpenGL backend, avoiding the buggy Vulkan driver on MediaTek -->
         <meta-data
             android:name="io.flutter.embedding.android.EnableImpeller"
             android:value="false" />
+        <meta-data
+            android:name="io.flutter.embedding.android.ImpellerBackend"
+            android:value="opengl" />
         
         <meta-data
             android:name="flutterEmbedding"
@@ -34,10 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
     </application>
 
     <queries>
