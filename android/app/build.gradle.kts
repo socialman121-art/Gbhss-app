@@ -34,3 +34,12 @@ android {
 flutter {
     source = "../.."
 }
+
+// Ensure both 64-bit and 32-bit libraries are included for maximum compatibility
+android {
+    defaultConfig {
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
+        }
+    }
+}
